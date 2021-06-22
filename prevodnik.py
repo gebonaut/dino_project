@@ -7,8 +7,13 @@ def main():
     data_typ, volba, *zbytek = sys.argv[1:] # zadávání argumentů z přík. řádky, [1:] je kvůli názvu souboru, to je první argument a ten nechceme
     if data_typ == "string":
         if volba == "split":
-            necistota = zbytek[0]
-            print(ocisteni_od_punkci(slovo, necistota))
+            slovo = zbytek[0]
+            if len(zbytek) > 2:
+                necistota = ""
+                print(ocisteni_od_punkci(slovo, necistota, punction=True))
+            else:
+                necistota = zbytek[1]
+                print(ocisteni_od_punkci(slovo, necistota))
         elif volba == "startwith":
             print(zacina_na_urcity_symbol(slovo, start))
         else:
